@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc FindOne (FindOneReq) returns (FindOneRes) {}
+  rpc FindAll (FindAllReq) returns (FindAllRes) {}
+  rpc Login (LoginReq) returns (LoginRes) {}
+  rpc Register (RegisterReq) returns (RegisterRes) {}
+
+}
+
+
+message User {
+  int64 id = 1;
+  string name = 2;
+  string password = 3;
+  string avatar = 4;
+}
+message MeteData {
+  string key = 1;
+  string value = 2;
+}
+
+message FindOneReq {
+  int64 id = 1;
+}
+message FindOneRes {
+  User user = 1;
+}
+
+message FindAllReq {}
+message FindAllRes {
+  repeated User user = 1;
+}
+
+message LoginReq {
+  string name = 1;
+  string password = 2;
+}
+
+message LoginRes {
+  int64 code = 1;
+  User user = 2;
+}
+
+message RegisterReq {
+  User user = 1;
+}
+
+message RegisterRes {
+  int64 code = 1;
+  User user = 2;
+}
+
